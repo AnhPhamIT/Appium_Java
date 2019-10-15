@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AndroidNativeSuite" verbose="1" thread-count="1">
+    <test name="Android native app test on Android 8 Samsung Galaxy S7">
+        <parameter name="platform" value="Android 8.0.0gjhg"/>
+        <parameter name="udid" value="ad0c1603a0cb1afc2a"/>
+        <parameter name="systemPort" value="8201"/> <!--same port 8200 still working  -->
+        <classes>
+            <class name="amazon.tests.MultipleDevices" />
+            <class name="amazon.tests.EndToEndFlow" />
+        </classes>
+    </test>
+</suite>
