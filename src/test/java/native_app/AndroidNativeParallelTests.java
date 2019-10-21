@@ -49,12 +49,12 @@ public class AndroidNativeParallelTests {
 		Thread.sleep(10000);
 	}
 	
-	@Test
-	public void test2() throws InterruptedException{
-		System.out.println("---------------------sessionID2: "+ driver.getSessionId());
-		System.out.println("----------------------Starting PlayStore-------------------------------");
-		Thread.sleep(10000);
-	}
+//	@Test
+//	public void test2() throws InterruptedException{
+//		System.out.println("---------------------sessionID2: "+ driver.getSessionId());
+//		System.out.println("----------------------Starting PlayStore-------------------------------");
+//		Thread.sleep(10000);
+//	}
 	
 	@AfterTest(alwaysRun = true)
 	public void teardown() throws Exception {
