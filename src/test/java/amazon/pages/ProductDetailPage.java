@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import common.WebSupport;
 import io.appium.java_client.AppiumDriver;
 import amazon.selectors.ProductDetailsSelectors;
+import amazon.selectors.ProductListSelectors;
 
 public class ProductDetailPage {
 	AppiumDriver<WebElement> _driver;
@@ -19,16 +20,20 @@ public class ProductDetailPage {
 	public String getProductName() {
 		return webSupport.getElementText(ProductDetailsSelectors.productName);
 	}
+	
+	public boolean isProductNameVisible(){
+		return webSupport.isElementVisible(ProductDetailsSelectors.productName);
+	}
 
 	public void selectAddToList() {
 		webSupport.clickByXpath(ProductDetailsSelectors.addToList);
 	}
-	
-	public void selectAddToCart(){
+
+	public void selectAddToCart() {
 		webSupport.clickByXpath(ProductDetailsSelectors.addToCart);
 	}
-	
-	public boolean isAddToList(){
+
+	public boolean isAddToList() {
 		return webSupport.isElementVisible(ProductDetailsSelectors.addToList);
 	}
 }

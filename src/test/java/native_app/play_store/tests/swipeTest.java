@@ -17,7 +17,7 @@ public class swipeTest {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Samsung Galaxy S7fdfdfd");
-		capabilities.setCapability("platformVersion", "8.0.0"); // need to be
+		capabilities.setCapability("platformVersion", "6.0.1"); // need to be
 																// exactly as S7
 																// version for
 																// AndroidDriver

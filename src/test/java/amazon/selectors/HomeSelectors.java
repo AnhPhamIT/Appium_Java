@@ -14,5 +14,6 @@ public class HomeSelectors {
 	public static String getProductByIndexAndSection(String section, int index) {
 		return "//h2[contains(text(),\"" + section + "\")]/parent::div[1]/descendant::img[" + index + "]";
 	}
+		
 
 }

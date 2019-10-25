@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import amazon.pages.FilterPage;
 import amazon.pages.HomePage;
 import amazon.pages.ProductDetailPage;
+import amazon.pages.ProductListPage;
 import amazon.pages.SearchResultPage;
 import amazon.pages.SignInPage;
 import amazon.pages.TempMailPage;
@@ -19,7 +20,7 @@ import core.TestSuite;
 
 public class EndToEndFlow extends TestSuite {
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void EndToEnd() throws MalformedURLException, InterruptedException {
 		Log.info("STEP 1: Navigate to URL https://www.amazon.com/");
 		driver.get("https://www.amazon.com/");
@@ -28,6 +29,7 @@ public class EndToEndFlow extends TestSuite {
 		FilterPage filterPage = new FilterPage(driver);
 		ProductDetailPage productPage = new ProductDetailPage(driver);
 		SignInPage signInPage = new SignInPage(driver);
+		ProductListPage productList = new ProductListPage(driver);
 		// homePage.navigateToSignInPage();
 		// signInPage.signIn("tefoto@mail-card.net", "123456");
 		// Thread.sleep(45000);
@@ -38,7 +40,10 @@ public class EndToEndFlow extends TestSuite {
 		Log.info("STEP 2: Select the first item in Deals recommend for you section");
 		homePage.navigateToSection("Deals recommended for you");
 		homePage.selectProductByIndex("Deals recommended for you", 2);
-
+		if(!productPage.isProductNameVisible()){
+			System.out.println("Select the 1st product in Product List");
+			productList.selectProductInProductList(1);
+		}
 		String productName = productPage.getProductName();
 		System.out.println("------------------------------" + productName);
 		homePage.navigateToLogo();
@@ -68,7 +73,7 @@ public class EndToEndFlow extends TestSuite {
 		Thread.sleep(10000);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void swicthToNewTab() throws InterruptedException {
 		String baseUrl = "http://discuss.appium.io/";
 		driver.get(baseUrl);

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -18,16 +19,26 @@ import org.testng.annotations.BeforeSuite;
 import common.WebSupport;
 import core.Log;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 public class TestSuite extends DriverFactory {
 	public AndroidDriver<WebElement> driver;
 	/**
 	 * Setup method to set system property for log file name
+	 * @throws InterruptedException 
 	 */
 	@BeforeSuite
-	public void Setup(ITestContext context) {
+	public void Setup(ITestContext context) throws InterruptedException {
 		// loading log4j.xml file
 		//Log.info("SUITE " + this.getClass().getName());
 		DOMConfigurator.configure(".\\src\\test\\resources\\log4j.xml");
+//		int port= 4723;
+//		if(!AppiumServerJava.checkIfServerIsRunnning(port))
+//		{
+//			AppiumServerJava.startServer(port);
+//			System.out.println("Appium Server is started on Port - " + port);
+//		}else{
+//			System.out.println("Appium Server is already running on Port - " + port);
+//		}
 	}
 	
 	@BeforeMethod
@@ -63,6 +74,10 @@ public class TestSuite extends DriverFactory {
 		} catch (Exception e) {
 			driver.quit();
 		}
-        
+	}
+	
+	@AfterSuite
+	public void afterSuite(){
+//		AppiumServerJava.stopServer(service);
 	}
 }
