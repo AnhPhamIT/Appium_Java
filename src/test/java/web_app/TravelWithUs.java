@@ -35,6 +35,7 @@ public class TravelWithUs {
 	ArrayList<HashMap<String, String>> dataArr;
 	String menu_xpath="//button[translate(normalize-space(text()), ' ', '')='Menu']";
 	String signIn_xpath ="//a[translate(normalize-space(text()), ' ', '')='SignIn']";
+	String filePath = System.getProperty("user.dir") + "\\test-data\\Trips.xlsx";
 
 	@BeforeMethod
 	public void setUp() throws Exception{
@@ -49,7 +50,8 @@ public class TravelWithUs {
 	}
 	@Test(enabled=false)
 	public void loginWithValidAccount() throws Exception{
-		dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "CreateTrip", "TC01");
+		dataArr = ExcelUtil.readExcel(filePath, "CreateTrip", "TC01");
+		//dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "CreateTrip", "TC01");
 		String email=dataArr.get(0).get("Email");
 		String password = dataArr.get(0).get("Password");
 		WebDriverWait wait = new WebDriverWait(driver, 30000);
@@ -81,7 +83,8 @@ public class TravelWithUs {
 	@Test(enabled=true)
 	public void a_createTrip() throws Exception{
 		loginWithValidAccount();
-		dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "CreateTrip", "TC01");
+		dataArr = ExcelUtil.readExcel(filePath, "CreateTrip", "TC01");
+		//dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "CreateTrip", "TC01");
 		tripTitle = dataArr.get(0).get("Title");
 		tripPlace = dataArr.get(0).get("Place");
 		memberNo = dataArr.get(0).get("Members");
@@ -121,7 +124,7 @@ public class TravelWithUs {
 	}
 	@Test(enabled=true)
 	public void b_editTrip() throws Exception{
-		dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "EditTrip", "TC03");
+		dataArr = ExcelUtil.readExcel(filePath, "EditTrip", "TC03");
 		tripTitle = dataArr.get(0).get("Title");
 		tripPlace = dataArr.get(0).get("Place");
 		String newTripTitle=dataArr.get(0).get("EditTitle");
@@ -168,7 +171,7 @@ public class TravelWithUs {
 	}
 	@Test(enabled=true)
 	public void c_deleteTrip() throws Exception{
-		dataArr = ExcelUtil.readExcel("D:\\Framework\\Appium\\Demo1\\test-data\\Trips.xlsx", "DeleteTrip", "TC02");
+		dataArr = ExcelUtil.readExcel(filePath, "DeleteTrip", "TC02");
 		String newTripTitle=dataArr.get(0).get("Title");
 		String newTripPlace=dataArr.get(0).get("Place");
 		String newMemberNo = dataArr.get(0).get("Members");
